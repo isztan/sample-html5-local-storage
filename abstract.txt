@@ -1,0 +1,3 @@
+This sample application demonstrates the use HTML5 local storage.
+The sample demonstrates how to use the HTML5 Local storage features, how to set the
+key value pairs and how to retrieve the Key value pairs using local storage

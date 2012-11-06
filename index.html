@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <meta name="Copyright" content="&copy; 2012, Intel Corporation" />
+  <!--
+   * Copyright (c) 2012, Intel Corporation
+   * File revision: 04 October 2012
+   * Please see http://software.intel.com/html5/license/samples 
+   * and the included README.md file for license terms and conditions.
+  -->
+<head>
+    <title>Local Storage Example</title>
+    <script language="javascript" type="text/javascript">
+
+        var db = getLocalStorage();
+
+        function getLocalStorage() {
+            try {
+                if (window.localStorage) return window.localStorage;
+            }
+            catch (e) {
+                return undefined;
+            }
+        }
+        function setlocal() {
+
+            db.setItem(document.getElementById("txtKey").value, document.getElementById("txtValue").value);
+            getlocal();
+        }
+
+        function ClearAll() {
+
+            db.clear();
+            getlocal();
+        }
+        function getlocal() {
+
+            var res = document.getElementById("r");
+            var pairs;
+            var i = 0;
+            res.innerHTML = "";
+            for (i = 0; i <= db.length - 1; i++) {
+                key = db.key(i);
+                res.innerHTML += "<div>" + "key: " + key + " value: " + db.getItem(key) + "</div>"; ;
+            }
+
+        }       
+        
+    </script>
+    <style>
+        *{font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;}
+        fieldset{border-radius: 5px;padding:20px;}        
+        .btn {
+            border-radius: 5px;
+            border:1px solid #000;
+            background-color:#cccccc;
+            padding:10px;
+            text-decoration: none;
+            width:5em; display:inline-block; text-align: center;
+        }
+        .btn:hover{ background-color:#bbbbff;}
+        table{
+            border: 1px; solid; #000;
+        }
+        span{ white-space:nowrap;}
+        label{ width:5em; display:inline-block; text-align: right;}
+        
+    </style>
+        
+    </style>
+</head>
+<body onload="getlocal()">
+</body>
+<fieldset>
+    <legend>Local Storage</legend>
+    <input type="text" id="txtKey" /> : <input type="text" id="txtValue" /> <a id="setbtn" class="btn" href="javascript:void(0);"  onclick="setlocal();">Set!</a> <a id="clear" href="javascript:void(0);" class="btn" onclick="ClearAll();">Clear!</a>
+    <div id="r"></div>    
+</fieldset>
+</body>
+</html>
